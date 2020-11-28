@@ -22,14 +22,24 @@ If the preamble is detected, it is stripped, and the remaining string passed thr
 
 ## Usage
 
-Use Xon just like you would use JSON:
+You can add it to your Gemfile with:
+
+```
+gem 'xon'
+```
+
+Run `bundle` to install it.
+
+Using Xon is similar to using JSON:
 
 ```
 require 'xon'
+
 Xon.dump({}) # => "{}"
 Xon.load("{}") # => {}
-Xon.dump(Time.now) # => "!:\"t:2020-12-01T13:37:00+02:00\""
-Xon.load("!:\"t:2020-12-01T13:37:00+02:00\"") # Returns a Time object.
+
+Xon.dump(Time.now) # => '!:"t:2020-12-01T13:37:00+02:00"'
+Xon.load('!:"t:2020-12-01T13:37:00+02:00"') # Returns a Time object.
 ```
 
 ## Examples
