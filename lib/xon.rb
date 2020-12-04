@@ -1,11 +1,12 @@
 require 'time'
+require 'date'
 require 'json'
 
 module Xon
 
   class ParserError < StandardError; end
 
-  VERSION = '0.1.1'.freeze
+  VERSION = '0.1.2'.freeze
   PREAMBLE = '!:'.freeze
 
   class << self
@@ -87,13 +88,11 @@ module Xon
     end
 
     # This initialization of constants is intentionally not done in the body
-    # of the module, to not be sensitive to loading order.
+    # of the module, to check the existence of constants as late as possible.
     @@inited = false
     def init!
       return if @@inited
       @@inited = true
-      # Ignore DateTime gracefully if it is not loaded.
-      const_set(:DateTime, defined?(DateTime) ? DateTime : Class.new)
       # Prefer MultiJson if it is loaded.
       const_set(:JSON, defined?(MultiJson) ? MultiJson : JSON)
     end
