@@ -1,4 +1,4 @@
-# Xon: A Superset of JSON
+# Xon: A Superset of JSON that supports `Time` values
 
 Xon (pronounced *//zoːn//*) is a superset of JSON that supports `Time` (and `DateTime`) values.
 
